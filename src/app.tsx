@@ -3,6 +3,7 @@ import "./app.css";
 import { useState } from "react";
 
 import logo from "./assets/logo.svg";
+import { Button } from "./components/button";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,9 +14,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-body">🚀 Vite + React Boilerplate</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <Button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
-          </button>
+          </Button>
         </p>
         <p>
           <a
