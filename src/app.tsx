@@ -1,12 +1,11 @@
 import "./app.css";
 
-import { useState } from "react";
-
 import logo from "./assets/logo.svg";
 import { Button } from "./components/button";
+import useCounter from "./hooks/use-counter";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { count, increment } = useCounter(0);
 
   return (
     <div className="App">
@@ -14,7 +13,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-body">🚀 Vite + React Boilerplate</p>
         <p>
-          <Button type="button" onClick={() => setCount((count) => count + 1)}>
+          <Button type="button" onClick={increment}>
             count is: {count}
           </Button>
         </p>
