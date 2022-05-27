@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --cache --report-unused-disable-directives ."
   },
   "dependencies": {
     "axios": "^0.27.2",
