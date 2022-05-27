@@ -1,8 +1,8 @@
 import "./app.css";
 
-import logo from "./assets/logo.svg";
-import { Button } from "./components/button";
-import useCounter from "./hooks/use-counter";
+import logo from "@/assets/logo.svg";
+import { Button } from "@/components/button";
+import useCounter from "@/hooks/use-counter";
 
 function App() {
   const { count, increment } = useCounter(0);
