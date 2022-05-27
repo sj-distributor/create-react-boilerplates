@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true
@@ -22,7 +23,8 @@
   },
   "plugins": [
     "react",
-    "simple-import-sort"
+    "simple-import-sort",
+    "unicorn"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -36,7 +38,18 @@
       }
     ],
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "kebabCase": true,
+          "camelCase": false,
+          "snakeCase": false,
+          "pascalCase": false
+        }
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
