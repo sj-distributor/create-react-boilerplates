@@ -18,7 +18,7 @@ jobs:
       - run: yarn install
 
       # Analyze code for potential problems
-      - run: yarn prettier --check .
+      - run: yarn prettier --check ./src
       - run: yarn lint --no-cache
       - run: yarn tsc
 
