@@ -2,9 +2,9 @@
 # to a cloud storage on each pull request to "main".
 # https://help.github.com/actions
 
-name: PR
+name: test
 
-on: [push]
+on: [push, pull_request]
 
 env:
   CI: true
@@ -18,7 +18,7 @@ jobs:
       - run: yarn install
 
       # Analyze code for potential problems
-      - run: yarn prettier --check ./src
+      - run: yarn prettier --check .
       - run: yarn lint --no-cache
       - run: yarn tsc
 
