@@ -4,9 +4,7 @@
 
 name: PR
 
-on:
-  pull_request:
-    branches: [main]
+on: [push]
 
 env:
   CI: true
