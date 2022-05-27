@@ -27,6 +27,8 @@
     "unicorn"
   ],
   "rules": {
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
     "react/react-in-jsx-scope": "off",
     "camelcase": "error",
     "spaced-comment": "error",
