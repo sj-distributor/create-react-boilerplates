@@ -1,10 +1,10 @@
-import "./welcome.css";
-
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo from "@/assets/logo.svg";
 import { Header } from "@/components/header/header";
+
+import styles from "./welcome.module.less";
 
 export const Welcome: FC = () => {
   const navigate = useNavigate();
@@ -12,16 +12,16 @@ export const Welcome: FC = () => {
   const onContinue = () => navigate("/demo");
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="text-center">
+      <header className={styles.appHeader}>
+        <img src={logo} className={styles.appLogo} alt="logo" />
         <Header>🚀 Vite + React Boilerplate</Header>
         <p>
           <button onClick={onContinue}>Continue</button>
         </p>
         <p>
           <a
-            className="App-link"
+            className={styles.appLink}
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -30,7 +30,7 @@ export const Welcome: FC = () => {
           </a>
           {" | "}
           <a
-            className="App-link"
+            className={styles.appLink}
             href="https://vitejs.dev/guide/features.html"
             target="_blank"
             rel="noopener noreferrer"

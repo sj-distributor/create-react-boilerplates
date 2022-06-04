@@ -15,3 +15,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+
+button {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 35px;
+  background-color: #6268fb;
+  color: white;
+  font-size: calc(10px + 2vmin);
+}
+
+button:hover {
+  background-color:#7278fc;
+}
