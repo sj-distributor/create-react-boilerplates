@@ -25,7 +25,7 @@ export const Demo: FC = () => {
     },
   });
 
-  const onBack = () => navigate("/welcome");
+  const onBack = () => navigate("/");
 
   const onWhoIAm = () => getUserRequest.run(1);
 
