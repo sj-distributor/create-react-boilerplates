@@ -35,3 +35,9 @@ yarn dev
 `├──`[`src/hooks`](./src/hooks) — react public hooks<br>
 `├──`[`src/routes`](./src/routes) — application routes components<br>
 `├──`[`src/theme`](./src/theme) — application theme - colors, fonts, paddings, etc.<br>
+
+## Vscode Plugin
+
+Tailwind CSS IntelliSense enhances the Tailwind development experience by providing Visual Studio Code users with advanced features such as autocomplete, syntax highlighting, and linting.
+
+> https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
