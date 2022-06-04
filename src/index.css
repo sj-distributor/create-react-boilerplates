@@ -24,7 +24,6 @@ p {
   margin-inline-end: 0px;
 }
 
-
 button {
   outline: none;
   border: none;
@@ -36,5 +35,5 @@ button {
 }
 
 button:hover {
-  background-color:#7278fc;
+  background-color: #7278fc;
 }
