@@ -3,12 +3,14 @@
     "typescript": "javascript",
     "typescriptreact": "javascript"
   },
+  "css.customData": [".vscode/css_custom_data.json"],
   "editor.quickSuggestions": {
     "strings": true
   },
-  "css.customData": [".vscode/css_custom_data.json"],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true
 }
