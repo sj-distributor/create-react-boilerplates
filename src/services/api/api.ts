@@ -6,7 +6,11 @@ export const api: AxiosInstance = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com/",
 });
 
-export const getUser = async (userId: number): Promise<types.GetUserResult> => {
+api.interceptors.response.use((response) => response.data);
+
+export const getUserApi = async (
+  userId: number
+): Promise<types.GetUserResult> => {
   const response: any = await api.get(`users/${userId}`);
 
   return {
