@@ -12,7 +12,9 @@ function useCounter(initialValue?: number): ReturnType {
   const [count, setCount] = useState(initialValue || 0);
 
   const increment = () => setCount((x) => x + 1);
+
   const decrement = () => setCount((x) => x - 1);
+
   const reset = () => setCount(initialValue || 0);
 
   return {
