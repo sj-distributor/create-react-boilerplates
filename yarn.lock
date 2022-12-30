@@ -518,10 +518,10 @@ ahooks-v3-count@^1.0.0:
   resolved "https://registry.npmmirror.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
   integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
 
-ahooks@^3.4.0:
-  version "3.4.1"
-  resolved "https://registry.npmmirror.com/ahooks/-/ahooks-3.4.1.tgz#6ce6859039c529311344dc840fe4021680de901a"
-  integrity sha512-PMxCDO6JsFdNrAyN3cW1J/2qt/vy2EJ/9KhxGOxj41hJhQddjgaBJjZKf/FrrnZmL+3yGPioZtbC4C7q7ru3yA==
+ahooks@^3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.7.4.tgz#25e76a989da324a855eb75758b789ab0644b7a59"
+  integrity sha512-hvgdqzPUKXn95mK3cGlDCi/ZZqv+FRibCUCFT8zW3hCwLGvixVfnHrIW2/2lgzPdLo8mLjp/XOdIJvcPvE2lgQ==
   dependencies:
     "@types/js-cookie" "^2.x.x"
     ahooks-v3-count "^1.0.0"
@@ -531,6 +531,7 @@ ahooks@^3.4.0:
     lodash "^4.17.21"
     resize-observer-polyfill "^1.5.1"
     screenfull "^5.0.0"
+    tslib "^2.4.1"
 
 ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
@@ -2913,6 +2914,11 @@ tslib@^2.3.0:
   version "2.4.0"
   resolved "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+
+tslib@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
+  integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
 tsutils@^3.21.0:
   version "3.21.0"

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/node": "^17.0.35",
-    "ahooks": "^3.4.0",
+    "ahooks": "^3.7.4",
     "axios": "^0.27.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
