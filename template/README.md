@@ -6,7 +6,6 @@
 
 ## Getting started
 
-
 Install project dependencies
 
 ```
