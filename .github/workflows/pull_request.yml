@@ -14,13 +14,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Analyze code for potential problems
-      - run: yarn prettier --check .
-      - run: yarn lint --no-cache
-      - run: yarn tsc
+      - name: Switch to directory and run commands
+        run: |
+          cd template
+          yarn install
+          yarn prettier --check .
+          yarn lint --no-cache
+          yarn tsc
 
       # Test
       # - run: yarn test
