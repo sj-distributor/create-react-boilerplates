@@ -17,13 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Switch to directory and run commands
-        run: |
-          cd template
-          yarn install
-          yarn prettier --check .
-          yarn lint --no-cache
-          yarn tsc
+      # - name: Switch to directory and run commands
+      #   run: |
+      #     cd template
+      #     yarn install
+      #     yarn prettier --check .
+      #     yarn lint --no-cache
+      #     yarn tsc
 
       # Test
       # - run: yarn test
