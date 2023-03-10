@@ -6,7 +6,7 @@
 Initialize project
 
 ```
-npx create-react-app <your-project-name> --template https://github.com/sj-distributor/react-vite-boilerplate
+yarn create react-app <your-project-name> --template @sj-distributor/cra-template-react-vite-boilerplate
 ```
 
 Enter the project root directory
