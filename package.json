@@ -1,10 +1,13 @@
 {
     "name": "@sj-distributor/cra-template-react-vite-boilerplate",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "keywords": [
       "react",
       "create-react-app",
-      "template"
+      "template",
+      "typescript",
+      "eslint",
+      "react-vite"
     ],
     "description": "React Template",
     "repository": "https://github.com/sj-distributor/react-vite-boilerplate",
