@@ -1,8 +1,27 @@
 {
-    "name": "react-vite-boilerplate",
+    "name": "@sj-distributor/cra-template-react-vite-boilerplate",
     "version": "0.0.1",
+    "keywords": [
+      "react",
+      "create-react-app",
+      "template"
+    ],
     "description": "React Template",
     "repository": "https://github.com/sj-distributor/react-vite-boilerplate",
     "author": "Simon.F",
-    "license": "MIT"
+    "license": "MIT",
+    "publishConfig": {
+      "access": "public",
+      "registry": "https://registry.npmjs.org/"
+    },
+    "engines": {
+      "node": ">=14"
+    },
+    "bugs": {
+      "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
+    },
+    "files": [
+      "template",
+      "template.json"
+    ]
   }
