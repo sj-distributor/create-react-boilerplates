@@ -24,10 +24,9 @@ jobs:
         run: yarn install
 
       # Analyze code for potential problems
-      - name: Run test
-        run: yarn prettier --check .
-        run: yarn lint --no-cache
-        run: yarn tsc
+      - run: yarn prettier --check .
+      - run: yarn lint --no-cache
+      - run: yarn tsc
 
       # Test
       # - run: yarn test
