@@ -17,9 +17,8 @@ jobs:
       - name: Perform GitHub Release
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          repo_token: ${{ secrets.SIMON_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_BRANCH: main
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: "latest",
           FILE_PATTERN: "!(.github)"
           tag: v${{ steps.get_version.outputs.release_version }}
-          name: v${{ steps.get_version.outputs.release_version }}
+          title: v${{ steps.get_version.outputs.release_version }}
