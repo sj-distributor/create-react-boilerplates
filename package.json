@@ -1,6 +1,6 @@
 {
-    "name": "@sj-distributor/cra-template-react-vite-boilerplate",
-    "version": "0.0.3",
+    "name": "@sj-distributor/react-vite-boilerplate",
+    "version": "1.2.0",
     "keywords": [
       "react",
       "create-react-app",
