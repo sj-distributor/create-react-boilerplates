@@ -11,7 +11,7 @@ yarn global add degit
 Initialize project
 
 ```
-degit -x .github @sj-distributor/react-vite-boilerplate#main/template <your-project-name>
+degit -x .github sj-distributor/react-vite-boilerplate#main/template <your-project-name>
 ```
 
 Enter the project root directory
