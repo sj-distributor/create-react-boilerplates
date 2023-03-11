@@ -17,7 +17,7 @@ jobs:
       - name: Perform GitHub Release
         uses: marvinpinto/action-automatic-releases@latest
         env:
-          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCH: main
           FILE_PATTERN: "!(.github)"
           tag: v${{ steps.get_version.outputs.release_version }}
