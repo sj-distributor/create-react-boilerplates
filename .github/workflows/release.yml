@@ -7,18 +7,22 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
 
       - name: Determine Release version
         id: get_version
-        run: echo ::set-output name=release_version::$(cat package.json | jq -r '.version')
+        run: |
+          release_version=$(cat package.json | jq -r '.version')
+          echo "RELEASE_VERSION=$release_version" >> $GITHUB_ENV
 
       - name: Perform Github Release
         uses: softprops/action-gh-release@v1
         env:
           FILE_PATTERN: "!(.github)"
         with:
-          name: v${{ steps.get_version.outputs.release_version }}
-          tag_name: v${{ env.get_version.outputs.release_version }}
+          name: v${{ env.RELEASE_VERSION }}
+          tag_name: v${{ env.RELEASE_VERSION }}
           generate_release_notes: true
