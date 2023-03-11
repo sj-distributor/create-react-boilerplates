@@ -2,11 +2,16 @@
 
 ## Usage
 
+Install degit tool
+
+```
+yarn global add degit
+```
 
 Initialize project
 
 ```
-yarn create react-app <your-project-name> --template @sj-distributor/cra-template-react-vite-boilerplate
+degit -x .github @sj-distributor/react-vite-boilerplate#main/template <your-project-name>
 ```
 
 Enter the project root directory
