@@ -14,12 +14,11 @@ jobs:
         id: get_version
         run: echo ::set-output name=release_version::$(cat package.json | jq -r '.version')
 
-      - name: Perform GitHub Release
-        uses: marvinpinto/action-automatic-releases@latest
+      - name: Perform Github Release
+        uses: softprops/action-gh-release@v1
         env:
           FILE_PATTERN: "!(.github)"
         with:
-          prerelease: false,
-          repo_token: ${{ secrets.GITHUB_TOKEN }
-          title: v${{ steps.get_version.outputs.release_version }}
-          automatic_release_tag: v${{ steps.get_version.outputs.release_version }}
+          name: v${{ steps.get_version.outputs.release_version }}
+          tag_name: v${{ env.get_version.outputs.release_version }}
+          generate_release_notes: true
