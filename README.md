@@ -12,6 +12,10 @@ Initialize project
 
 ```
 degit -x .github sj-distributor/react-vite-boilerplate/template <your-project-name>
+
+# Specify version
+
+degit -x .github sj-distributor/react-vite-boilerplate/template#<version> <your-project-name>
 ```
 
 Enter the project root directory
