@@ -4,11 +4,11 @@ const headerStyle: CSSProperties = {
   fontSize: "40px",
 };
 
-export interface HeaderProps {
+export interface IHeaderProps {
   children: React.ReactNode;
 }
 
-export const Header: FC<HeaderProps> = (props: HeaderProps) => {
+export const Header: FC<IHeaderProps> = (props: IHeaderProps) => {
   const { children } = props;
 
   return <p style={headerStyle}>{children}</p>;
