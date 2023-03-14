@@ -22,7 +22,7 @@ jobs:
       
       - name: Generate package.json
         run: |
-          jq '{"package"}' template.json > ./template/package.json
+          jq '.package' template.json > ./template/package.json
           cat ./template/package.json
 
       - name: Switch to directory and run commands
