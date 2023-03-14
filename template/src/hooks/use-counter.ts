@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
-interface ReturnType {
+interface IReturnType {
   count: number;
   increment: () => void;
   decrement: () => void;
@@ -8,7 +8,7 @@ interface ReturnType {
   setCount: Dispatch<SetStateAction<number>>;
 }
 
-function useCounter(initialValue?: number): ReturnType {
+function useCounter(initialValue?: number): IReturnType {
   const [count, setCount] = useState(initialValue || 0);
 
   const increment = () => setCount((x) => x + 1);
