@@ -1,8 +1,0 @@
-# Ignore files and folders
-node_modules
-build
-src
-*.log
-*.tsbuildinfo
-# Include tsconfig.json
-!tsconfig.json
