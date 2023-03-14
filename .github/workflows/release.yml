@@ -18,6 +18,12 @@ jobs:
           release_version=$(cat package.json | jq -r '.version')
           echo "RELEASE_VERSION=$release_version" >> $GITHUB_ENV
 
+      - name: Pack npm package
+        run: npm pack
+        id: pack_npm
+        env:
+          PACKAGE_FILE: ${{ steps.get_version.outputs.RELEASE_VERSION }}.tgz
+
       - name: Perform Github Release
         uses: softprops/action-gh-release@v1
         env:
@@ -26,3 +32,15 @@ jobs:
           name: ${{ env.RELEASE_VERSION }}
           tag_name: ${{ env.RELEASE_VERSION }}
           generate_release_notes: true
+          files: ${{ env.PACKAGE_FILE }}
+          
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.SIMON_NPM_AUTH_TOKEN}}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
+          npm publish ${{ env.PACKAGE_FILE }}
+      
+
+
+         
