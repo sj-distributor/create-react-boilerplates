@@ -8,8 +8,7 @@ interface IUser {
   username: string;
 }
 
-// 默认用户信息
-const defaultUser: IUser = {
+export const defaultUser: IUser = {
   id: 0,
   username: "",
 };
@@ -25,6 +24,6 @@ export const isLoginState = selector({
   get: ({ get }) => {
     const user = get(userState);
 
-    return !isEmpty(user.id);
+    return !isEmpty(user.username);
   },
 });

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import useCounter from "@/hooks/use-counter";
-import { isLoginState, userState } from "@/models";
+import { defaultUser, isLoginState, userState } from "@/models";
 import { getUserApi } from "@/services/api/api";
 export const useStore = () => {
   const navigate = useNavigate();
@@ -31,12 +31,15 @@ export const useStore = () => {
 
   const onLogin = () => getUserRequest.run(1);
 
+  const onLogout = () => setUser(defaultUser);
+
   return {
     user,
     count,
     onBack,
     onLogin,
     isLogin,
+    onLogout,
     increment,
   };
 };

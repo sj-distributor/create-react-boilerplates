@@ -6,7 +6,8 @@ import styles from "./demo.module.less";
 import { useStore } from "./use-store";
 
 export const Demo: FC = () => {
-  const { user, count, onBack, onLogin, isLogin, increment } = useStore();
+  const { user, count, onBack, onLogin, isLogin, onLogout, increment } =
+    useStore();
 
   return (
     <div className="text-center">
@@ -16,6 +17,12 @@ export const Demo: FC = () => {
         {!isLogin && (
           <p>
             <button onClick={onLogin}>Login</button>
+          </p>
+        )}
+
+        {isLogin && (
+          <p>
+            <button onClick={onLogout}>Logout</button>
           </p>
         )}
 
