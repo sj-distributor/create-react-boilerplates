@@ -17,6 +17,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Read template.json
+        id: read-template
+        run: echo "${{ steps.pkg-contents.outputs.pkg }}" > template.json
+        shell: bash
+        env:
+          FILE_CONTENTS: ${{ secrets.FILE_CONTENTS }}
+      
+      - name: Get package contents
+        id: pkg-contents
+        run: echo ${{ env.FILE_CONTENTS }} | base64 -d > package.json
+        shell: bash
+        env:
+          FILE_CONTENTS: ${{ secrets.FILE_CONTENTS }}
+      
+      - name: Generate package.json
+        run: echo ${{ steps.read-template.outputs.pkg }} > package.json
+
+      - name: Move package.json to template folder
+        run: mv package.json ./template/package.json
+
       - name: Switch to directory and run commands
         run: |
           cd template
