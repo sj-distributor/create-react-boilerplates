@@ -1,32 +1,32 @@
 {
     "name": "@sj-distributor/cra-template-react-vite-boilerplate",
-    "version": "1.3.8",
+    "version": "1.3.9",
     "keywords": [
-      "react",
-      "create-react-app",
-      "template",
-      "typescript",
-      "eslint",
-      "react-vite",
-      "boilerplate"
+        "react",
+        "create-react-app",
+        "template",
+        "typescript",
+        "eslint",
+        "react-vite",
+        "boilerplate"
     ],
     "description": "React Template",
     "repository": "https://github.com/sj-distributor/react-vite-boilerplate",
     "author": "Simon.F",
     "license": "MIT",
     "publishConfig": {
-      "access": "public",
-      "registry": "https://registry.npmjs.org/"
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     },
     "engines": {
-      "node": ">=14"
+        "node": ">=14"
     },
     "bugs": {
-      "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
+        "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
     },
     "files": [
-      "template",
-      "template.json",
-      "tsconfig.json"
+        "template",
+        "template.json",
+        "tsconfig.json"
     ]
-  }
+}
