@@ -2,7 +2,7 @@
 # to a cloud storage on each pull request to "main".
 # https://help.github.com/actions
 
-name: test
+name: CI
 
 on: [push, pull_request]
 
