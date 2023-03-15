@@ -1,48 +1,39 @@
-import { useRequest } from "ahooks";
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 
 import { Header } from "@/components/header/header";
-import useCounter from "@/hooks/use-counter";
-import { getUserApi } from "@/services/api/api";
 
 import styles from "./demo.module.less";
+import { useStore } from "./use-store";
 
 export const Demo: FC = () => {
-  const { count, increment } = useCounter(0);
-
-  const [name, setName] = useState<string>();
-
-  const navigate = useNavigate();
-
-  const getUserRequest = useRequest(getUserApi, {
-    manual: true,
-    onSuccess: (result) => {
-      setName(result.name);
-    },
-    onError: (error) => {
-      console.warn(error.message);
-    },
-  });
-
-  const onBack = () => navigate("/");
-
-  const onWhoIAm = () => getUserRequest.run(1);
+  const { user, count, onBack, onLogin, isLogin, onLogout, increment } =
+    useStore();
 
   return (
     <div className="text-center">
-      <header className={styles.demoHeader}>
-        <Header>Demo</Header>
+      <div className={styles.demoHeader}>
+        {user && <Header>My name is {user.username}</Header>}
+
+        {!isLogin && (
+          <p>
+            <button onClick={onLogin}>Login</button>
+          </p>
+        )}
+
+        {isLogin && (
+          <p>
+            <button onClick={onLogout}>Logout</button>
+          </p>
+        )}
+
         <p>
           <button onClick={increment}>count is: {count}</button>
         </p>
+
         <p>
-          <button onClick={onWhoIAm}>who i am {name && `: ${name}`}</button>
+          <button onClick={onBack}>Back</button>
         </p>
-        <p>
-          <button onClick={onBack}>back</button>
-        </p>
-      </header>
+      </div>
     </div>
   );
 };
