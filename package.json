@@ -1,6 +1,6 @@
 {
     "name": "@sj-distributor/cra-template-react-vite-boilerplate",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "keywords": [
         "react",
         "create-react-app",
@@ -25,6 +25,7 @@
         "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
     },
     "files": [
-        "template"
+        "template",
+        "template.json"
     ]
 }
