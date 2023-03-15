@@ -12,7 +12,7 @@ React vite boilerplate
 Initialize project
 
 ```
-yarn create react-app <your-project-name> --template @sj-distributor/cra-template-react-vite-boilerplates --use-yarn
+yarn create react-app <your-project-name> --template @sj-distributor/cra-template-react-vite-boilerplate --use-yarn
 ```
 
 Enter the project root directory
