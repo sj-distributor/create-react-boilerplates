@@ -5,10 +5,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:@sj-distributor/react/recommended"
-  ],
+  "extends": ["plugin:@sj-distributor/react/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,7 +14,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": [],
   "rules": {},
   "settings": {
     "react": {
