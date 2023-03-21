@@ -367,10 +367,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sj-distributor/eslint-plugin-react@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/@sj-distributor/eslint-plugin-react/-/eslint-plugin-react-0.5.0.tgz#5974d0821ef7cbf160134332883c2d2d58ddb0df"
-  integrity sha512-4iMMQCoGmMv1wzOQiCUoJoZsqq4vPF5LG1oEJPvBYyAw0wv0SXk1it3DD4F+qfbFRgdqxsTb046w8q2x1Q72cA==
+"@sj-distributor/eslint-plugin-react@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@sj-distributor/eslint-plugin-react/-/eslint-plugin-react-0.7.0.tgz#6549d9c4cfee9a106be8094fe0d01fe9442b81a4"
+  integrity sha512-8QsRHyzGZJvEYc3ecnFPA7OGp/UlTax8quc9Y+MyutQwgLbrXKYUq/cpQKg3u0QpTGw1z/ueWdGsycczLiITGw==
   dependencies:
     requireindex "^1.2.0"
 
