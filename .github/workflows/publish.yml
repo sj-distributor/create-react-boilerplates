@@ -44,5 +44,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.SIMON_NPM_AUTH_TOKEN}}
         run: |
-          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "@sj-distributor:registry=https://registry.npmjs.org/
+          //registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish ${{ env.PACKAGE_FILE }}
