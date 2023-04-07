@@ -1,65 +1,39 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import spawn from 'cross-spawn'
+import spawn from 'cross-spawn';
+import { red, reset } from 'kolorist';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import prompts from 'prompts';
+
+import { frameworks, templates } from './templates';
+import { Framework } from './types';
 import {
   argv,
   copy,
+  cwd,
   emptyDir,
   formatTargetDir,
+  getProjectName,
   isEmpty,
   isValidPackageName,
   pkgFromUserAgent,
+  renameFiles,
   setupReactSwc,
   toValidPackageName,
-} from './comment';
-import prompts from 'prompts'
-import {
-  cyan,
-  red,
-  reset,
-  yellow,
-} from 'kolorist'
-import { Framework } from './types'
+} from './utils';
 
-const CWD = process.cwd()
-
-const FRAMEWORKS: Framework[] = [
-  {
-    name: 'react',
-    display: 'React',
-    color: cyan,
-    variants: [
-      {
-        name: 'react-vite-recoil',
-        display: 'TypeScript + vite + Recoil',
-        color: yellow,
-      }
-    ],
-  }
-]
-
-const TEMPLATES = FRAMEWORKS.map(
-  (f) => (f.variants && f.variants.map((v) => v.name)) || [f.name],
-).reduce((a, b) => a.concat(b), [])
-
-const renameFiles: Record<string, string | undefined> = {
-  _gitignore: '.gitignore',
-}
-
-const DEFAULT_TARGET_DIR = 'react-project'
+const DEFAULT_TARGET_DIR = 'react-project';
 
 async function init() {
-  const argTargetDir = formatTargetDir(argv._[0])
-  const argTemplate = argv.template || argv.t
+  const argTargetDir = formatTargetDir(argv._[0]);
 
-  let targetDir = argTargetDir || DEFAULT_TARGET_DIR
-  const getProjectName = () =>
-    targetDir === '.' ? path.basename(path.resolve()) : targetDir
+  const argTemplate = argv.template || argv.t;
+
+  let targetDir = argTargetDir || DEFAULT_TARGET_DIR;
 
   let result: prompts.Answers<
     'projectName' | 'overwrite' | 'packageName' | 'framework' | 'variant'
-  >
+  >;
 
   try {
     result = await prompts(
@@ -69,8 +43,8 @@ async function init() {
           name: 'projectName',
           message: reset('Project name:'),
           initial: DEFAULT_TARGET_DIR,
-          onState: (state) => {
-            targetDir = formatTargetDir(state.value) || DEFAULT_TARGET_DIR
+          onState: state => {
+            targetDir = formatTargetDir(state.value) || DEFAULT_TARGET_DIR;
           },
         },
         {
@@ -86,37 +60,39 @@ async function init() {
         {
           type: (_, { overwrite }: { overwrite?: boolean }) => {
             if (overwrite === false) {
-              throw new Error(red('✖') + ' Operation cancelled')
+              throw new Error(red('✖') + ' Operation cancelled');
             }
-            return null
+
+            return null;
           },
           name: 'overwriteChecker',
         },
         {
-          type: () => (isValidPackageName(getProjectName()) ? null : 'text'),
+          type: () => (isValidPackageName(getProjectName(targetDir)) ? null : 'text'),
           name: 'packageName',
           message: reset('Package name:'),
-          initial: () => toValidPackageName(getProjectName()),
-          validate: (dir) =>
+          initial: () => toValidPackageName(getProjectName(targetDir)),
+          validate: dir =>
             isValidPackageName(dir) || 'Invalid package.json name',
         },
         {
           type:
-            argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
+            argTemplate && templates.includes(argTemplate) ? null : 'select',
           name: 'framework',
           message:
-            typeof argTemplate === 'string' && !TEMPLATES.includes(argTemplate)
+            typeof argTemplate === 'string' && !templates.includes(argTemplate)
               ? reset(
                   `"${argTemplate}" isn't a valid template. Please choose from below: `,
                 )
               : reset('Select a framework:'),
           initial: 0,
-          choices: FRAMEWORKS.map((framework) => {
-            const frameworkColor = framework.color
+          choices: frameworks.map(framework => {
+            const frameworkColor = framework.color;
+
             return {
               title: frameworkColor(framework.display || framework.name),
               value: framework,
-            }
+            };
           }),
         },
         {
@@ -125,51 +101,57 @@ async function init() {
           name: 'variant',
           message: reset('Select a variant:'),
           choices: (framework: Framework) =>
-            framework.variants.map((variant) => {
-              const variantColor = variant.color
+            framework.variants.map(variant => {
+              const variantColor = variant.color;
+
               return {
                 title: variantColor(variant.display || variant.name),
                 value: variant.name,
-              }
+              };
             }),
         },
       ],
       {
         onCancel: () => {
-          throw new Error(red('✖') + ' Operation cancelled')
+          throw new Error(red('✖') + ' Operation cancelled');
         },
       },
-    )
+    );
   } catch (cancelled: any) {
-    console.log(cancelled.message)
-    return
+    console.log(cancelled.message);
+
+    return;
   }
 
   // user choice associated with prompts
-  const { framework, overwrite, packageName, variant } = result
+  const { framework, overwrite, packageName, variant } = result;
 
-  const root = path.join(CWD, targetDir)
+  const root = path.join(cwd, targetDir);
 
   if (overwrite) {
-    emptyDir(root)
+    emptyDir(root);
   } else if (!fs.existsSync(root)) {
-    fs.mkdirSync(root, { recursive: true })
+    fs.mkdirSync(root, { recursive: true });
   }
 
   // determine template
-  let template: string = variant || framework?.name || argTemplate
-  let isReactSwc = false
+  let template: string = variant || framework?.name || argTemplate;
+
+  let isReactSwc = false;
+
   if (template.includes('-swc')) {
-    isReactSwc = true
-    template = template.replace('-swc', '')
+    isReactSwc = true;
+    template = template.replace('-swc', '');
   }
 
-  const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
-  const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
-  const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.')
+  const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent);
+
+  const pkgManager = pkgInfo ? pkgInfo.name : 'npm';
+
+  const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.');
 
   const { customCommand } =
-    FRAMEWORKS.flatMap((f) => f.variants).find((v) => v.name === template) ?? {}
+    frameworks.flatMap(f => f.variants).find(v => v.name === template) ?? {};
 
   if (customCommand) {
     const fullCustomCommand = customCommand
@@ -179,81 +161,88 @@ async function init() {
       .replace(/^npm exec/, () => {
         // Prefer `pnpm dlx` or `yarn dlx`
         if (pkgManager === 'pnpm') {
-          return 'pnpm dlx'
+          return 'pnpm dlx';
         }
         if (pkgManager === 'yarn' && !isYarn1) {
-          return 'yarn dlx'
+          return 'yarn dlx';
         }
+
         // Use `npm exec` in all other cases,
         // including Yarn 1.x and other custom npm clients.
-        return 'npm exec'
-      })
+        return 'npm exec';
+      });
 
-    const [command, ...args] = fullCustomCommand.split(' ')
+    const [command, ...args] = fullCustomCommand.split(' ');
+
     // we replace TARGET_DIR here because targetDir may include a space
-    const replacedArgs = args.map((arg) => arg.replace('TARGET_DIR', targetDir))
+    const replacedArgs = args.map(arg => arg.replace('TARGET_DIR', targetDir));
+
     const { status } = spawn.sync(command, replacedArgs, {
       stdio: 'inherit',
-    })
-    process.exit(status ?? 0)
+    });
+
+    process.exit(status ?? 0);
   }
 
-  console.log(`\nScaffolding project in ${root}...`)
+  console.log(`\nScaffolding project in ${root}...`);
 
   const templateDir = path.resolve(
     fileURLToPath(import.meta.url),
     '../..',
     `template-${template}`,
-  )
+  );
 
   const write = (file: string, content?: string) => {
-    const targetPath = path.join(root, renameFiles[file] ?? file)
-    if (content) {
-      fs.writeFileSync(targetPath, content)
-    } else {
-      copy(path.join(templateDir, file), targetPath)
-    }
-  }
+    const targetPath = path.join(root, renameFiles[file] ?? file);
 
-  const files = fs.readdirSync(templateDir)
-  for (const file of files.filter((f) => f !== 'package.json')) {
-    write(file)
+    if (content) {
+      fs.writeFileSync(targetPath, content);
+    } else {
+      copy(path.join(templateDir, file), targetPath);
+    }
+  };
+
+  const files = fs.readdirSync(templateDir);
+
+  for (const file of files.filter(f => f !== 'package.json')) {
+    write(file);
   }
 
   const pkg = JSON.parse(
     fs.readFileSync(path.join(templateDir, `package.json`), 'utf-8'),
-  )
+  );
 
-  pkg.name = packageName || getProjectName()
+  pkg.name = packageName || getProjectName(targetDir);
 
-  write('package.json', JSON.stringify(pkg, null, 2) + '\n')
+  write('package.json', JSON.stringify(pkg, null, 2) + '\n');
 
   if (isReactSwc) {
-    setupReactSwc(root, template.endsWith('-ts'))
+    setupReactSwc(root, template.endsWith('-ts'));
   }
 
-  const cdProjectName = path.relative(CWD, root)
-  console.log(`\nDone. Now run:\n`)
-  if (root !== CWD) {
+  const cdProjectName = path.relative(cwd, root);
+
+  console.log(`\nDone. Now run:\n`);
+  if (root !== cwd) {
     console.log(
       `  cd ${
         cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
       }`,
-    )
+    );
   }
   switch (pkgManager) {
     case 'yarn':
-      console.log('  yarn')
-      console.log('  yarn dev')
-      break
+      console.log('  yarn');
+      console.log('  yarn dev');
+      break;
     default:
-      console.log(`  ${pkgManager} install`)
-      console.log(`  ${pkgManager} run dev`)
-      break
+      console.log(`  ${pkgManager} install`);
+      console.log(`  ${pkgManager} run dev`);
+      break;
   }
-  console.log()
+  console.log();
 }
 
-init().catch((e) => {
-  console.error(e)
-})
+init().catch(e => {
+  console.error(e);
+});
