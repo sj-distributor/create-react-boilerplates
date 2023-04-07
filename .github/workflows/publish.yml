@@ -46,7 +46,3 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish ${{ env.PACKAGE_FILE }}
-      
-
-
-         
