@@ -2,6 +2,12 @@ import minimist from "minimist"
 import fs from 'node:fs'
 import path from 'node:path'
 
+export const cwd = process.cwd()
+
+export const renameFiles: Record<string, string | undefined> = {
+  _gitignore: '.gitignore',
+}
+
 export const argv = minimist<{
   t?: string;
   template?: string;
@@ -94,3 +100,7 @@ export const editFile = (file: string, callback: (content: string) => string) =>
 
   fs.writeFileSync(file, callback(content), 'utf-8');
 }
+
+export const getProjectName = (targetDir: string) => {
+  return targetDir === '.' ? path.basename(path.resolve()) : targetDir;
+};
