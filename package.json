@@ -1,9 +1,9 @@
 {
-    "name": "@sj-distributor/create-react-boilerplate",
+    "name": "create-react-boilerplate-app",
     "version": "2.0.0",
     "type": "module",
     "bin": {
-        "create-react-boilerplate": "index.js",
+        "create-react-boilerplate-app": "index.js",
         "crb-app": "index.js"
     },
     "scripts": {
