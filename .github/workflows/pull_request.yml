@@ -14,30 +14,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
 
-      - name: Install jq
-        run: sudo apt-get install jq
-      
-      - name: Generate package.json
-        run: |
-          jq '.package' template.json > ./template/package.json
-          cat ./template/package.json
+      - name: Install deps
+        run: yarn install
 
-      - name: Switch to directory and run commands
+      - name: Typecheck
+        run: yarn typecheck
+
+      - name: Code Check
         run: |
-          cd template
+          cd template-react-vite-recoil
           yarn install
           yarn prettier --check .
           yarn lint --no-cache
           yarn tsc
-
-      # Test
-      # - run: yarn test
-
-      # Compile
-      # - run: yarn build
-
-      # Deploy
-      # - run: yarn deploy

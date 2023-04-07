@@ -1,4 +1,4 @@
-name: Release
+name: Publish Package
 
 on:
   workflow_dispatch: {}
@@ -11,6 +11,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.x
+
+      - name: Install deps
+        run: yarn install
+
+      - name: Typecheck
+        run: yarn typecheck
 
       - name: Determine Release version
         id: get_version

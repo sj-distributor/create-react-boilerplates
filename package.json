@@ -1,6 +1,17 @@
 {
-    "name": "@sj-distributor/cra-template-react-vite-boilerplate",
-    "version": "1.5.3",
+    "name": "@sj-distributor/create-react-boilerplate",
+    "version": "2.0.0",
+    "type": "module",
+    "bin": {
+        "create-react-boilerplate": "index.js",
+        "crb-app": "index.js"
+    },
+    "scripts": {
+        "dev": "unbuild --stub",
+        "build": "unbuild",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "yarn build"
+    },
     "keywords": [
         "react",
         "create-react-app",
@@ -8,9 +19,10 @@
         "typescript",
         "eslint",
         "react-vite",
-        "boilerplate"
+        "boilerplate",
+        "react-boilerplate"
     ],
-    "description": "React Template",
+    "description": "Create React Boilerplate",
     "repository": "https://github.com/sj-distributor/react-vite-boilerplate",
     "author": "Simon.F",
     "license": "MIT",
@@ -19,13 +31,24 @@
         "registry": "https://registry.npmjs.org/"
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=14.18.0"
     },
     "bugs": {
         "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
     },
     "files": [
-        "template",
-        "template.json"
-    ]
+        "dist",
+        "index.js",
+        "template-*"
+    ],
+    "devDependencies": {
+        "@types/cross-spawn": "^6.0.2",
+        "@types/minimist": "^1.2.2",
+        "@types/prompts": "^2.4.4",
+        "cross-spawn": "^7.0.3",
+        "kolorist": "^1.7.0",
+        "minimist": "^1.2.8",
+        "prompts": "^2.4.2",
+        "unbuild": "^1.1.2"
+    }
 }
