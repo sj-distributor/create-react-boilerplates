@@ -1,6 +1,6 @@
 {
     "name": "create-react-boilerplates",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "type": "module",
     "bin": {
         "create-react-boilerplates": "index.js",
@@ -23,7 +23,7 @@
         "react-boilerplate"
     ],
     "description": "Create React Boilerplate",
-    "repository": "https://github.com/sj-distributor/react-vite-boilerplate",
+    "repository": "https://github.com/sj-distributor/create-react-boilerplates",
     "author": "Simon.F",
     "license": "MIT",
     "publishConfig": {
@@ -34,7 +34,7 @@
         "node": ">=14.18.0"
     },
     "bugs": {
-        "url": "https://github.com/sj-distributor/react-vite-boilerplate/issues"
+        "url": "https://github.com/sj-distributor/create-react-boilerplates/issues"
     },
     "files": [
         "dist",
