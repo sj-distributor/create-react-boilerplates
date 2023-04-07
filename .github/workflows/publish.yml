@@ -18,6 +18,9 @@ jobs:
       - name: Typecheck
         run: yarn typecheck
 
+      - name: Build
+        run: yarn build
+
       - name: Determine Release version
         id: get_version
         run: |
@@ -44,6 +47,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.SIMON_NPM_AUTH_TOKEN}}
         run: |
-          echo "@sj-distributor:registry=https://registry.npmjs.org/
-          //registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish ${{ env.PACKAGE_FILE }}
