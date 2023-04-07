@@ -15,7 +15,7 @@ jobs:
       - name: Install deps
         run: yarn install
 
-      - name: typecheck
+      - name: Typecheck
         run: yarn typecheck
 
       - name: Determine Release version
