@@ -1,34 +1,34 @@
-# 🚀 Vite React Starter Template
+# 🚀 Create React Boilerplates
 
-[![Npm Version](https://img.shields.io/npm/v/npm.svg)](https://github.com/sj-distributor/react-vite-boilerplate)
-[![MIT License](https://img.shields.io/npm/l/react-native-tab-view.svg?style=flat-square)](https://github.com/sj-distributor/react-vite-boilerplate/blob/main/LICENSE)
+[![Npm Version](https://img.shields.io/npm/v/npm.svg)](https://github.com/sj-distributor/create-react-boilerplates)
+[![MIT License](https://img.shields.io/npm/l/react-native-tab-view.svg?style=flat-square)](https://github.com/sj-distributor/create-react-boilerplates/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dm/eslint-config-standard.svg)](https://www.npmjs.com/package/@sj-distributor/cra-template-react-vite-boilerplate)
-[![CI](https://github.com/sj-distributor/react-vite-boilerplate/actions/workflows/release.yml/badge.svg)](https://github.com/sj-distributor/react-vite-boilerplate/actions/workflows/release.yml)
-
-React vite boilerplate
+[![CI](https://github.com/sj-distributor/create-react-boilerplates/actions/workflows/pull_request.yml/badge.svg)](https://github.com/sj-distributor/create-react-boilerplates/actions/workflows/pull_request.yml)
 
 ## Usage
 
-Initialize project
+With Yarn:
 
 ```
-yarn create react-app <your-project-name> --template @sj-distributor/cra-template-react-vite-boilerplate --use-yarn
+yarn create react-boilerplates
 ```
 
-Enter the project root directory
+With PNPM:
+
+```
+pnpm create react-boilerplates
+```
+
+With NPM:
+
+```
+npm create react-boilerplates@latest
+```
+
+Then follow the prompts! Run Project
 
 ```
 cd <your-project-name>
-```
 
-Install project dependencies
-
-```
-yarn
-```
-
-Run Project
-
-```
-yarn dev
+yarn && yarn dev
 ```
