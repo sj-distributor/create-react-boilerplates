@@ -223,6 +223,7 @@ async function init() {
   const cdProjectName = path.relative(cwd, root);
 
   console.log(`\nDone. Now run:\n`);
+  
   if (root !== cwd) {
     console.log(
       `  cd ${
@@ -240,7 +241,6 @@ async function init() {
       console.log(`  ${pkgManager} run dev`);
       break;
   }
-  console.log();
 }
 
 init().catch(e => {
