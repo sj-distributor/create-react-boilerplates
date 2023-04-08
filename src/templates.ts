@@ -1,5 +1,5 @@
 import { Framework } from "./types";
-import { cyan, yellow } from 'kolorist';
+import { cyan, green, yellow } from 'kolorist';
 
 export const frameworks: Framework[] = [
   {
@@ -9,8 +9,13 @@ export const frameworks: Framework[] = [
     variants: [
       {
         name: 'react-vite-recoil',
-        display: 'TypeScript + vite + Recoil',
+        display: 'TypeScript + Vite + Recoil',
         color: yellow,
+      },
+      {
+        name: 'react-ts',
+        display: 'TypeScript',
+        color: green,
       }
     ],
   }
