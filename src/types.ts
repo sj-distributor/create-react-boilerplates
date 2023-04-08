@@ -2,14 +2,14 @@ export type ColorFunc = (str: string | number) => string
 
 export type Framework = {
   name: string
-  display: string
   color: ColorFunc
-  variants: FrameworkVariant[]
+  display: string
+  boilerplate: FrameworkBoilerplate[]
 }
 
-export type FrameworkVariant = {
+export type FrameworkBoilerplate = {
   name: string
-  display: string
   color: ColorFunc
+  display: string
   customCommand?: string
 }

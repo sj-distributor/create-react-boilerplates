@@ -6,7 +6,7 @@ export const frameworks: Framework[] = [
     name: 'react',
     display: 'React',
     color: cyan,
-    variants: [
+    boilerplate: [
       {
         name: 'react-recoil',
         display: 'TypeScript + Recoil',
@@ -22,5 +22,5 @@ export const frameworks: Framework[] = [
 ]
 
 export const templates = frameworks
-  .map(f => (f.variants && f.variants.map(v => v.name)) || [f.name])
+  .map(f => (f.boilerplate && f.boilerplate.map(v => v.name)) || [f.name])
   .reduce((a, b) => a.concat(b), []);

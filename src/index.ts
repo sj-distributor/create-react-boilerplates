@@ -32,7 +32,7 @@ async function init() {
   let targetDir = argTargetDir || DEFAULT_TARGET_DIR;
 
   let result: prompts.Answers<
-    'projectName' | 'overwrite' | 'packageName' | 'framework' | 'variant'
+    'projectName' | 'overwrite' | 'packageName' | 'framework' | 'boilerplate'
   >;
 
   try {
@@ -86,27 +86,27 @@ async function init() {
                 )
               : reset('Select a framework:'),
           initial: 0,
-          choices: frameworks.map(framework => {
-            const frameworkColor = framework.color;
+          choices: frameworks.map(item => {
+            const frameworkColor = item.color;
 
             return {
-              title: frameworkColor(framework.display || framework.name),
-              value: framework,
+              title: frameworkColor(item.display || item.name),
+              value: item,
             };
           }),
         },
         {
           type: (framework: Framework) =>
-            framework && framework.variants ? 'select' : null,
-          name: 'variant',
-          message: reset('Select a variant:'),
+            framework && framework.boilerplate ? 'select' : null,
+          name: 'boilerplate',
+          message: reset('Select a boilerplate:'),
           choices: (framework: Framework) =>
-            framework.variants.map(variant => {
-              const variantColor = variant.color;
+            framework.boilerplate.map(item => {
+              const variantColor = item.color;
 
               return {
-                title: variantColor(variant.display || variant.name),
-                value: variant.name,
+                title: variantColor(item.display || item.name),
+                value: item.name,
               };
             }),
         },
@@ -124,7 +124,7 @@ async function init() {
   }
 
   // user choice associated with prompts
-  const { framework, overwrite, packageName, variant } = result;
+  const { framework, overwrite, packageName, boilerplate } = result;
 
   const root = path.join(cwd, targetDir);
 
@@ -135,7 +135,7 @@ async function init() {
   }
 
   // determine template
-  let template: string = variant || framework?.name || argTemplate;
+  let template: string = boilerplate || framework?.name || argTemplate;
 
   let isReactSwc = false;
 
@@ -151,7 +151,7 @@ async function init() {
   const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.');
 
   const { customCommand } =
-    frameworks.flatMap(f => f.variants).find(v => v.name === template) ?? {};
+    frameworks.flatMap(f => f.boilerplate).find(v => v.name === template) ?? {};
 
   if (customCommand) {
     const fullCustomCommand = customCommand
@@ -223,7 +223,7 @@ async function init() {
   const cdProjectName = path.relative(cwd, root);
 
   console.log(`\nDone. Now run:\n`);
-  
+
   if (root !== cwd) {
     console.log(
       `  cd ${
