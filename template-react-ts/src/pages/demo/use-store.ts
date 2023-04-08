@@ -1,9 +1,9 @@
 import { useRequest } from "ahooks";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useCounter from "@/hooks/use-counter";
 import { getUserApi } from "@/services/api/api";
-import { useState } from "react";
 
 export const useStore = () => {
   const { count, increment } = useCounter(0);
