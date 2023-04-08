@@ -8,8 +8,8 @@ export const frameworks: Framework[] = [
     color: cyan,
     variants: [
       {
-        name: 'react-vite-recoil',
-        display: 'TypeScript + Vite + Recoil',
+        name: 'react-recoil',
+        display: 'TypeScript + Recoil',
         color: yellow,
       },
       {
