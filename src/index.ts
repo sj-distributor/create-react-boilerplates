@@ -183,7 +183,7 @@ async function init() {
     process.exit(status ?? 0);
   }
 
-  console.log(`\nScaffolding project in ${root}...`);
+  console.log(`\nBoilerplate project in ${root}...`);
 
   const templateDir = path.resolve(
     fileURLToPath(import.meta.url),
