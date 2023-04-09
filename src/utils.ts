@@ -4,7 +4,7 @@ import path from 'node:path'
 
 export const cwd = process.cwd()
 
-export const renameFiles: Record<string, string | undefined> = {
+const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore',
 }
 
@@ -103,4 +103,14 @@ export const editFile = (file: string, callback: (content: string) => string) =>
 
 export const getProjectName = (targetDir: string) => {
   return targetDir === '.' ? path.basename(path.resolve()) : targetDir;
+};
+
+export const write = (root:string, templateDir: string, file: string, content?: string) => {
+  const targetPath = path.join(root, renameFiles[file] ?? file);
+
+  if (content) {
+    fs.writeFileSync(targetPath, content);
+  } else {
+    copy(path.join(templateDir, file), targetPath);
+  }
 };

@@ -9,7 +9,6 @@ import { frameworks, templates } from './templates';
 import { Framework } from './types';
 import {
   argv,
-  copy,
   cwd,
   emptyDir,
   formatTargetDir,
@@ -17,9 +16,9 @@ import {
   isEmpty,
   isValidPackageName,
   pkgFromUserAgent,
-  renameFiles,
   setupReactSwc,
   toValidPackageName,
+  write,
 } from './utils';
 
 const DEFAULT_TARGET_DIR = 'react-project';
@@ -192,20 +191,10 @@ async function init() {
     `template-${template}`,
   );
 
-  const write = (file: string, content?: string) => {
-    const targetPath = path.join(root, renameFiles[file] ?? file);
-
-    if (content) {
-      fs.writeFileSync(targetPath, content);
-    } else {
-      copy(path.join(templateDir, file), targetPath);
-    }
-  };
-
   const files = fs.readdirSync(templateDir);
 
   for (const file of files.filter(f => f !== 'package.json')) {
-    write(file);
+    write(root, templateDir, file);
   }
 
   const pkg = JSON.parse(
@@ -214,7 +203,7 @@ async function init() {
 
   pkg.name = packageName || getProjectName(targetDir);
 
-  write('package.json', JSON.stringify(pkg, null, 2) + '\n');
+  write(root, templateDir, 'package.json', JSON.stringify(pkg, null, 2) + '\n');
 
   if (isReactSwc) {
     setupReactSwc(root, template.endsWith('-ts'));
@@ -231,6 +220,7 @@ async function init() {
       }`,
     );
   }
+  
   switch (pkgManager) {
     case 'yarn':
       console.log('  yarn');
