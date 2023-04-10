@@ -1,8 +1,0 @@
-# 忽略的文件或文件夹
-node_modules/
-dist/
-build/
-*.log
-
-# 不忽略的文件或文件夹
-!template/
