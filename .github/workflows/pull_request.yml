@@ -27,7 +27,7 @@ jobs:
 
       - name: Template react-recoil Code Check
         run: |
-          cd template/template-react-recoil
+          cd templates/template-react-recoil
           yarn install
           yarn prettier --check .
           yarn lint --no-cache
@@ -35,7 +35,7 @@ jobs:
       
       - name: Template react-ts Code Check
         run: |
-          cd template/template-react-ts
+          cd templates/template-react-ts
           yarn install
           yarn prettier --check .
           yarn lint --no-cache
