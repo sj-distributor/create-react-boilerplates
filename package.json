@@ -1,6 +1,6 @@
 {
     "name": "create-react-boilerplates",
-    "version": "2.0.9",
+    "version": "2.1.0",
     "type": "module",
     "bin": {
         "create-react-boilerplates": "index.js",
@@ -39,7 +39,8 @@
     "files": [
         "dist",
         "index.js",
-        "template-*"
+        "templates",
+        "templates/templates-*"
     ],
     "devDependencies": {
         "@types/cross-spawn": "^6.0.2",
