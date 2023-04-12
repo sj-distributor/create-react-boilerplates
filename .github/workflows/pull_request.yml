@@ -11,6 +11,9 @@ env:
   CI: true
   VERSION: ${{ github.event.pull_request.number }}
 
+permissions:
+  contents: read
+  
 jobs:
   setup:
     runs-on: ubuntu-latest
