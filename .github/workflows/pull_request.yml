@@ -1,21 +1,24 @@
-# Compile, bundle, and upload application bundles
-# to a cloud storage on each pull request to "main".
-# https://help.github.com/actions
-
-name: CI
+name: CI Test
 
 on: [push, pull_request]
+
+# Cancel prev CI if new commit come
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 env:
   CI: true
   VERSION: ${{ github.event.pull_request.number }}
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.x
 
@@ -40,3 +43,31 @@ jobs:
           yarn prettier --check .
           yarn lint --no-cache
           yarn tsc
+  ############################ Test Coverage ###########################
+  upload-test-coverage:
+    name: test-coverage
+    runs-on: ubuntu-latest
+    needs: [normal-test]
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: coverage-artifacts
+          path: persist-coverage
+
+      - name: Merge Code Coverage
+        run: |
+          npx nyc merge persist-coverage/ coverage/coverage-final.json
+          npx nyc report --reporter text -t coverage --report-dir coverage
+          rm -rf persist-coverage
+
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          # use own token to upload coverage reports
+          token: ${{ secrets.CODECOV_TOKEN }}
