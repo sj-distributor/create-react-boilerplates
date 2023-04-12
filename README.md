@@ -25,10 +25,14 @@ With NPM:
 npm create react-boilerplates@latest
 ```
 
-Then follow the prompts! Run Project
+Then follow the prompts and run the project.  
+
+For example, using yarn.
 
 ```
 cd <your-project-name>
 
-yarn && yarn dev
+yarn
+
+yarn dev
 ```
