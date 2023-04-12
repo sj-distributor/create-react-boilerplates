@@ -46,11 +46,12 @@ jobs:
           yarn prettier --check .
           yarn lint --no-cache
           yarn tsc
-  ############################ Test Coverage ###########################
-  upload-test-coverage:
+
+  ############################ Coverage ###########################
+  coverage:
     name: test-coverage
     runs-on: ubuntu-latest
-    needs: [normal-test]
+    needs: [setup]
     steps:
       - uses: actions/checkout@v3
 
