@@ -46,6 +46,14 @@ jobs:
           yarn prettier --check .
           yarn lint --no-cache
           yarn tsc
+      
+      - uses: actions/upload-artifact@v3
+        # if: ${{ matrix.module == 'dom' && matrix.react == '17' }}
+        name: upload coverages
+        with:
+          name: coverage-artifacts
+          path: persist-coverage/
+
 
   ############################ Coverage ###########################
   coverage:
