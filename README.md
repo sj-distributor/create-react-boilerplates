@@ -8,16 +8,16 @@
 
 ## Usage
 
-With Yarn:
-
-```
-yarn create react-boilerplates
-```
-
 With PNPM:
 
 ```
 pnpm create react-boilerplates
+```
+
+With Yarn:
+
+```
+yarn create react-boilerplates
 ```
 
 With NPM:
