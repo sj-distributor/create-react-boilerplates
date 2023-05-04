@@ -33,7 +33,7 @@ For example, using yarn.
 ```
 cd <your-project-name>
 
-yarn
+pnpm
 
-yarn dev
+pnpm dev
 ```
