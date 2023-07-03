@@ -13,7 +13,7 @@
     "allowJs": false,
     "esModuleInterop": false,
     "isolatedModules": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
