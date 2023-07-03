@@ -1,7 +1,7 @@
-import { defineBuildConfig } from 'unbuild'
+import { defineBuildConfig } from "unbuild";
 
 export default defineBuildConfig({
-  entries: ['src/index'],
+  entries: ["src/index"],
   clean: true,
   rollup: {
     inlineDependencies: true,
@@ -10,6 +10,6 @@ export default defineBuildConfig({
     },
   },
   alias: {
-    prompts: 'prompts/lib/index.js',
-  }
-})
+    prompts: "prompts/lib/index.js",
+  },
+});
