@@ -84,24 +84,6 @@ export const pkgFromUserAgent = (userAgent: string | undefined) => {
   };
 };
 
-export const setupReactSwc = (root: string, isTs: boolean) => {
-  editFile(path.resolve(root, "package.json"), (content) => {
-    return content.replace(
-      /"@vitejs\/plugin-react": ".+?"/,
-      `"@vitejs/plugin-react-swc": "^3.0.0"`
-    );
-  });
-  editFile(
-    path.resolve(root, `vite.config.${isTs ? "ts" : "js"}`),
-    (content) => {
-      return content.replace(
-        "@vitejs/plugin-react",
-        "@vitejs/plugin-react-swc"
-      );
-    }
-  );
-};
-
 export const editFile = (
   file: string,
   callback: (content: string) => string

@@ -16,7 +16,6 @@ import {
   isEmpty,
   isValidPackageName,
   pkgFromUserAgent,
-  setupReactSwc,
   toValidPackageName,
   write,
 } from "./utils";
@@ -113,14 +112,7 @@ async function init() {
   }
 
   // determine template
-  let template: string = boilerplate || argvTemplate;
-
-  let isReactSwc = false;
-
-  if (template.includes("-swc")) {
-    isReactSwc = true;
-    template = template.replace("-swc", "");
-  }
+  const template: string = boilerplate || argvTemplate;
 
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent);
 
@@ -132,16 +124,29 @@ async function init() {
 
   if (customCommand) {
     const fullCustomCommand = customCommand
-      .replace(/^npm create/, `${pkgManager} create`)
+      .replace(/^npm create/, () => {
+        // `bun create` uses it's own set of templates,
+        // the closest alternative is using `bun x` directly on the package
+        if (pkgManager === "bun") {
+          return "bun x create-";
+        }
+
+        return `${pkgManager} create `;
+      })
       // Only Yarn 1.x doesn't support `@version` in the `create` command
       .replace("@latest", () => (isYarn1 ? "" : "@latest"))
       .replace(/^npm exec/, () => {
-        // Prefer `pnpm dlx` or `yarn dlx`
+        // Prefer `pnpm dlx`, `yarn dlx`, or `bun x`
         if (pkgManager === "pnpm") {
           return "pnpm dlx";
         }
+
         if (pkgManager === "yarn" && !isYarn1) {
           return "yarn dlx";
+        }
+
+        if (pkgManager === "bun") {
+          return "bun x";
         }
 
         // Use `npm exec` in all other cases,
@@ -184,10 +189,6 @@ async function init() {
   pkg.name = packageName || getProjectName(targetDir);
 
   write(root, templateDir, "package.json", JSON.stringify(pkg, null, 2) + "\n");
-
-  if (isReactSwc) {
-    setupReactSwc(root, template.endsWith("-ts"));
-  }
 
   const cdProjectName = path.relative(cwd, root);
 
