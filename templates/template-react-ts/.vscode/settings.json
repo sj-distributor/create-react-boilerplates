@@ -1,16 +1,64 @@
 {
+  // 格式化支持
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript",
     "typescriptreact": "javascript"
   },
+
+  // 启用自定义数据
   "css.customData": [".vscode/css_custom_data.json"],
+
+  // 自动显示代码提示
   "editor.quickSuggestions": {
     "strings": true
   },
+
+  // 保存时进行格式化
   "editor.formatOnSave": true,
+
+  // 保存时进行eslint自动修复
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+
+  // 启用prettier时，要求存在配置文件
+  "prettier.requireConfig": true,
+
+  // 启用eslint格式化
+  "eslint.format.enable": true,
+
+  // 设置默认格式化工具
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.requireConfig": true
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // 自动重命名标签
+  "editor.linkedEditing": true,
+
+  // 自动删除末尾的空白字符
+  "files.trimTrailingWhitespace": true,
+
+  // markdown 文件不自动删除末尾的空白字符
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+
+  // 自动导入缺失的模块
+  "javascript.suggest.autoImports": true,
+
+  // 自动导入缺失的模块
+  "typescript.suggest.autoImports": true,
+
+  // 移动文件时，更新导入路径
+  "vascript.updateImportsOnFileMove.enabled": "prompt",
+
+  // 移动文件时，更新导入路径
+  "typescript.updateImportsOnFileMove.enabled": "prompt"
 }
