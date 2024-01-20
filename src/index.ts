@@ -47,17 +47,32 @@ async function init() {
         },
         {
           type: () =>
-            !fs.existsSync(targetDir) || isEmpty(targetDir) ? null : "confirm",
+            !fs.existsSync(targetDir) || isEmpty(targetDir) ? null : "select",
           name: "overwrite",
           message: () =>
             (targetDir === "."
               ? "Current directory"
               : `Target directory "${targetDir}"`) +
-            ` is not empty. Remove existing files and continue?`,
+            ` is not empty. Please select the steps to perform：`,
+          initial: 0,
+          choices: [
+            {
+              title: "Cancel operation",
+              value: 1,
+            },
+            {
+              title: "Ignore files and continue",
+              value: 2,
+            },
+            {
+              title: "Delete the current file and continue",
+              value: 3,
+            },
+          ],
         },
         {
-          type: (_, { overwrite }: { overwrite?: boolean }) => {
-            if (overwrite === false) {
+          type: (_, { overwrite }: { overwrite?: number }) => {
+            if (overwrite === 1) {
               throw new Error(red("✖") + " Operation cancelled");
             }
 
@@ -105,7 +120,7 @@ async function init() {
 
   const root = path.join(cwd, targetDir);
 
-  if (overwrite) {
+  if (overwrite === 3) {
     emptyDir(root);
   } else if (!fs.existsSync(root)) {
     fs.mkdirSync(root, { recursive: true });
