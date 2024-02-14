@@ -1,13 +1,17 @@
-# React TS Boilerplate
+# React TS Template
 
-## 技术栈
+## Technology Stack
 
-- [Vite](https://vitejs.dev)
-- [React](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [ReactRouter](https://reactrouter.com/docs/en/v6)
+- [Vite](https://vitejs.dev): Efficient build tool for modern browsers.
+- [React](https://reactjs.org): JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org): Superset of JavaScript with static type-checking.
+- [ReactRouter](https://reactrouter.com/docs/en/v6): Navigation library for React applications.
+- [TailwindCss](https://tailwindcss.com/): Utility-first CSS framework for creating custom designs.
+- [Axios](https://axios-http.com/): Promise-based HTTP client for the browser and Node.js.
+- [Ramda](https://ramdajs.com/): Functional programming library for JavaScript.
+- [ahooks](https://ahooks.js.org/): Collection of React Hooks for common tasks.
 
-## 快速开始
+## Quick Start
 
 Install project dependencies
 
@@ -21,13 +25,13 @@ Launch the app, it will become available at [http://localhost:3000](http://local
 yarn dev
 ```
 
-## 项目规范
+## Project Standards
 
 - xxx
 - xxx
 - xxx
 
-## 目录结构
+## Directory Structure
 
 `├──`[`.vscode`](.vscode) — VSCode settings including code snippets, recommended extensions etc<br>
 `├──`[`public`](./public) — Static assets such as robots.txt, index.html etc<br>
@@ -39,20 +43,12 @@ yarn dev
 `├──`[`src/theme`](./src/services) — External connection service<br>
 `├──`[`src/utils`](./src/utils) — Utility functions<br>
 
-## 安装以下 vscode 插件方便开发
+## Recommended VSCode Extensions
 
-Tailwind CSS IntelliSense
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss): IntelliSense for Tailwind CSS.
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&ssr=false#overview): Code formatting tool.
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig): Editor configuration consistency.
 
-> https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+## Coding Conventions
 
-Prettier - Code formatter
-
-> https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&ssr=false#overview
-
-EditorConfig for VS Code
-
-> https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
-
-## 编码约定
-
-> https://github.com/sj-distributor/react-coding-conventions
+- Check [here](https://github.com/sj-distributor/react-coding-conventions).
