@@ -1,4 +1,4 @@
-# React TS Template
+# React TS Boilerplate
 
 ## Technology Stack
 
