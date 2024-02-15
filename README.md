@@ -39,8 +39,8 @@ pnpm dev
 ```
 
 # Templates
-|template name|description|
+|template name|more description|
 |-|-|
-|template-react-recoil|recoil + vite + typescript + tailwindcss|
-|template-react-ts|vite + typescript + tailwindcss|
-|template-react-zustand|zustand + vite + typescript|
+|template-react-recoil|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-recoil#react-vite-recoil-boilerplate)|
+|template-react-ts|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-ts#react-ts-boilerplate)|
+|template-react-zustand|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-zustand#react-ts-boilerplate)|
