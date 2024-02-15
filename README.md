@@ -41,5 +41,6 @@ pnpm dev
 # Templates
 |template name|description|
 |-|-|
-|template-react-recoil|vite + typescript + recoil|
-|template-react-ts|vite + typescript|
+|template-react-recoil|recoil + vite + typescript + tailwindcss|
+|template-react-ts|vite + typescript + tailwindcss|
+|template-react-zustand|zustand + vite + typescript|
