@@ -14,18 +14,6 @@ With PNPM:
 pnpm create react-boilerplates
 ```
 
-With Yarn:
-
-```
-yarn create react-boilerplates
-```
-
-With NPM:
-
-```
-npm create react-boilerplates@latest
-```
-
 Then follow the prompts and run the project.  
 
 For example, using yarn.
@@ -37,10 +25,3 @@ pnpm
 
 pnpm dev
 ```
-
-# Templates
-|template name|more description|
-|-|-|
-|template-react-recoil|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-recoil#react-vite-recoil-boilerplate)|
-|template-react-ts|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-ts#react-ts-boilerplate)|
-|template-react-zustand|click [here](https://github.com/sj-distributor/create-react-boilerplates/tree/main/templates/template-react-zustand#react-ts-boilerplate)|
