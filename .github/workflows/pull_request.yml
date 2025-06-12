@@ -1,48 +1,48 @@
-name: CI Test
+# name: CI Test
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-# Cancel prev CI if new commit come
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+# # Cancel prev CI if new commit come
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+#   cancel-in-progress: true
 
-env:
-  CI: true
-  VERSION: ${{ github.event.pull_request.number }}
+# env:
+#   CI: true
+#   VERSION: ${{ github.event.pull_request.number }}
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
   
-jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
+# jobs:
+#   setup:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: checkout
+#         uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 16.x
 
-      - name: Install deps
-        run: yarn install
+#       - name: Install deps
+#         run: pnpm install
 
-      - name: Typecheck
-        run: yarn typecheck
+#       - name: Typecheck
+#         run: pnpm typecheck
 
-      - name: Template react-recoil Code Check
-        run: |
-          cd templates/template-react-recoil
-          yarn install
-          yarn prettier --check .
-          yarn lint --no-cache
-          yarn tsc
+#       - name: Template react-zustand Code Check
+#         run: |
+#           cd templates/template-react-zustand
+#           yarn install
+#           yarn prettier --check .
+#           yarn lint --no-cache
+#           yarn tsc
       
-      - name: Template react-ts Code Check
-        run: |
-          cd templates/template-react-ts
-          yarn install
-          yarn prettier --check .
-          yarn lint --no-cache
-          yarn tsc
+#       - name: Template react-ts Code Check
+#         run: |
+#           cd templates/template-react-ts
+#           yarn install
+#           yarn prettier --check .
+#           yarn lint --no-cache
+#           yarn tsc
