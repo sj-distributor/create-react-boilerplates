@@ -8,7 +8,7 @@
 
 ## Usage
 
-With PNPM:
+With PNPM or Yarn:
 
 ```
 pnpm create react-boilerplates
