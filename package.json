@@ -10,7 +10,7 @@
         "dev": "unbuild --stub",
         "build": "unbuild",
         "typecheck": "tsc --noEmit",
-        "prepublishOnly": "yarn build"
+        "prepublishOnly": "pnpm build"
     },
     "keywords": [
         "react",
