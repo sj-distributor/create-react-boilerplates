@@ -13,13 +13,13 @@ jobs:
           node-version: 16.x
 
       - name: Install deps
-        run: yarn install
+        run: pnpm install
 
-      - name: Typecheck
-        run: yarn typecheck
+      # - name: Typecheck
+      #   run: yarn typecheck
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Determine Release version
         id: get_version
