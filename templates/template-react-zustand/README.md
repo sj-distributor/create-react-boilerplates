@@ -1,3 +1,4 @@
+@ -1,55 +0,0 @@
 # React TS Boilerplate
 
 ## Technology Stack
@@ -5,10 +6,7 @@
 - [Vite](https://vitejs.dev): Efficient build tool for modern browsers.
 - [React](https://reactjs.org): JavaScript library for building user interfaces.
 - [TypeScript](https://www.typescriptlang.org): Superset of JavaScript with static type-checking.
-- [ReactRouter](https://reactrouter.com/docs/en/v6): Navigation library for React applications.
-- [Axios](https://axios-http.com/): Promise-based HTTP client for the browser and Node.js.
 - [Ramda](https://ramdajs.com/): Functional programming library for JavaScript.
-- [ahooks](https://ahooks.js.org/): Collection of React Hooks for common tasks.
 - [Zustand](https://zustand-demo.pmnd.rs/): Small, fast and scaleable bearbones state-management solution.
 
 ## Quick Start
@@ -38,7 +36,7 @@ pnpm dev
 `├──`[`src/assets`](./src/assets) — Static assets<br>
 `├──`[`src/components`](./src/components) — React public components<br>
 `├──`[`src/hooks`](./src/hooks) — React public hooks<br>
-`├──`[`src/models`](./src/hooks) — Status Management<br>
+`├──`[`src/stores`](./src/stores) — Status Management<br>
 `├──`[`src/pages`](./src/pages) — Application and page (screen) components<br>
 `├──`[`src/routes`](./src/routes) — Application routes components<br>
 `├──`[`src/theme`](./src/services) — External connection service<br>

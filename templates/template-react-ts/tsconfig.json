@@ -1,40 +1,7 @@
 {
-  "extends": "./tsconfig.paths.json",
-  "compilerOptions": {
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "target": "ES2020",
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "useDefineForClassFields": true,
-
-    /* Bundler mode */
-    "jsx": "react-jsx",
-    "noEmit": true,
-    "allowJs": false,
-    "esModuleInterop": false,
-    "isolatedModules": true,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Plugin */
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
-  },
-  "include": ["src"],
+  "files": [],
   "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ]
 }
