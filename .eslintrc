@@ -1,5 +1,0 @@
-{
-    "extends": [
-        "plugin:@sj-distributor/react/recommended"
-    ]
-}
