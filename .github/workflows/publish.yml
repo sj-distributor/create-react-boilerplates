@@ -1,16 +1,23 @@
 name: Publish Package
 
 on:
-  workflow_dispatch: {}
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  build-and-release:
+  release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: lts/*
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -24,31 +31,17 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Determine Release version
-        id: get_version
-        run: |
-          release_version=$(cat package.json | jq -r '.version')
-          echo "RELEASE_VERSION=$release_version" >> $GITHUB_ENV
-
       - name: Pack npm package
         run: npm pack
-        id: pack_npm
-        env:
-          PACKAGE_FILE: ${{ steps.get_version.outputs.RELEASE_VERSION }}.tgz
 
-      - name: Perform Github Release
-        uses: softprops/action-gh-release@v1
+      - name: Generate changelog and create release
+        run: npx changelogithub
         env:
-          FILE_PATTERN: "!(.github)"
-        with:
-          name: ${{ env.RELEASE_VERSION }}
-          tag_name: ${{ env.RELEASE_VERSION }}
-          generate_release_notes: true
-          files: ${{ env.PACKAGE_FILE }}
-          
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.SIMON_NPM_AUTH_TOKEN}}
         run: |
           echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
-          npm publish ${{ env.PACKAGE_FILE }}
+          npm publish *.tgz
