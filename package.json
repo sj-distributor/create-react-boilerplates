@@ -10,7 +10,8 @@
         "dev": "unbuild --stub",
         "build": "unbuild",
         "typecheck": "tsc --noEmit",
-        "prepublishOnly": "pnpm build"
+        "prepublishOnly": "pnpm build",
+        "lint": "eslint ."
     },
     "keywords": [
         "react",
