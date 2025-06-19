@@ -12,8 +12,8 @@ importers:
         specifier: ^1.52.2
         version: 1.52.2(eslint@9.29.0(jiti@2.4.2))(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3)
       '@sj-distributor/eslint-config':
-        specifier: ^0.2.0
-        version: 0.2.0(@eslint-react/eslint-plugin@1.52.2(eslint@9.29.0(jiti@2.4.2))(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3))(@typescript-eslint/utils@8.34.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
+        specifier: ^0.2.1
+        version: 0.2.1(@eslint-react/eslint-plugin@1.52.2(eslint@9.29.0(jiti@2.4.2))(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3))(@typescript-eslint/utils@8.34.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       '@types/cross-spawn':
         specifier: ^6.0.6
         version: 6.0.6
@@ -502,8 +502,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sj-distributor/eslint-config@0.2.0':
-    resolution: {integrity: sha512-niFW3omdb8e54wQjBorCXKadvIVcbPek6gyph453DIH6ra+mrqKejet9oLLZiNB0F6lpiGwUKJFUqmDGI187xw==}
+  '@sj-distributor/eslint-config@0.2.1':
+    resolution: {integrity: sha512-8T1hWPrRFAcX5Jjhwxmfep9p5+mcFSQrGCVYJbUXAbxn8ZXaHOlAd8EDNQaf8JyK92exJwVi54LpU6ddSOq+MA==}
     peerDependencies:
       '@eslint-react/eslint-plugin': ^1.23.2
       eslint: ^9.18.0
@@ -2179,7 +2179,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.43.0':
     optional: true
 
-  '@sj-distributor/eslint-config@0.2.0(@eslint-react/eslint-plugin@1.52.2(eslint@9.29.0(jiti@2.4.2))(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3))(@typescript-eslint/utils@8.34.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)':
+  '@sj-distributor/eslint-config@0.2.1(@eslint-react/eslint-plugin@1.52.2(eslint@9.29.0(jiti@2.4.2))(ts-api-utils@2.1.0(typescript@5.8.3))(typescript@5.8.3))(@typescript-eslint/utils@8.34.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.9.1

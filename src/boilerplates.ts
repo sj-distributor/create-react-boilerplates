@@ -1,16 +1,16 @@
-import { bgBlack, yellow } from "kolorist";
+import { bgBlack, yellow } from 'kolorist';
 
-import { Boilerplate } from "./types";
+import type { Boilerplate } from './types';
 
 export const boilerplates: Boilerplate[] = [
   {
-    name: "react-ts",
-    display: "TypeScript",
+    name: 'react-ts',
+    display: 'TypeScript',
     color: bgBlack,
   },
   {
-    name: "react-zustand",
-    display: "TypeScript + Zustand",
+    name: 'react-zustand',
+    display: 'TypeScript + Zustand',
     color: yellow,
   },
 ];
