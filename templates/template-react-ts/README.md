@@ -1,4 +1,3 @@
-@ -1,55 +0,0 @@
 # React TS Boilerplate
 
 ## Technology Stack

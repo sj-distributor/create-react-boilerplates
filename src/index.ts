@@ -222,7 +222,7 @@ async function init() {
 
   switch (pkgManager) {
     case 'pnpm':
-      console.log('  pnpm');
+      console.log('  pnpm install');
       console.log('  pnpm dev');
       break;
     default:
